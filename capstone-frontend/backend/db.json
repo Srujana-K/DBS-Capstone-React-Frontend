@@ -1,0 +1,37 @@
+{
+    "client" : [
+        {
+            "id" : "DBS001",
+            "clientName" : "MacQuaire Bank Limited",
+            "custodian" : {
+                "custodianId" : "CS001",
+                "custodianName" : "BNP Paribas"
+            },
+            "price": 14000000
+        },
+        {
+            "clientId" : "DBS002",
+            "clientName" : "Loyds Bank Corporate plc",
+            "custodian" : {
+                "custodianId" : "CS001",
+                "custodianName" : "BNP Paribas"
+            },
+            "price": 14000000
+        }
+    ],
+
+    "instrument" : [
+        {
+            "id" : 1001,
+            "instrumentName" : "US Treasury Bills",
+            "faceValue" : 100,
+            "expiryDate" : "15-Jan-21"
+        },
+        {
+            "instrumentId" : 1002,
+            "instrumentName" : "RBI-2026-6.5%",
+            "faceValue" : 1000,
+            "expiryDate" : "06-Jun-21"
+        }
+    ]
+}
