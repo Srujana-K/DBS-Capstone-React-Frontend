@@ -10,7 +10,7 @@ function NavBar() {
                 <Navbar.Brand href="/home">Trading System</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/home">Home</Nav.Link>
-                    <Nav.Link href="/orders">Orders</Nav.Link>
+                    <Nav.Link href="/orders">Place Orders</Nav.Link>
                     <Nav.Link href="/stocks">Stocks</Nav.Link>
                     <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                 </Nav>

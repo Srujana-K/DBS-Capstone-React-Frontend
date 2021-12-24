@@ -33,5 +33,46 @@
             "faceValue" : 1000,
             "expiryDate" : "06-Jun-21"
         }
+    ],
+
+    "buyOrders" : [
+        {
+            "id" : 1,
+           "clientId" : "DBS001",
+            "instrumentId" : 1001,
+            "orderDirection" : "BUY",
+            "price": "1000",
+            "quantity": "25",
+            "status":"Active"
+        },
+        {
+            "id" : 2,
+            "clientId" : "DBS002",
+             "instrumentId" : 1001,
+             "orderDirection" : "BUY",
+             "price": "1000",
+             "quantity": "25",
+             "status" : "Completed"
+         }
+    ],
+    "sellOrders":[
+        {
+            "id" : 1,
+            "clientId" : "DBS001",
+             "instrumentId" : 1002,
+             "orderDirection" : "SELL",
+             "price": "1000",
+             "quantity": "25",
+             "status" : "Active"
+        },
+        {
+            "id" : 2,
+            "clientId" : "DBS002",
+             "instrumentId" : 1001,
+             "orderDirection" : "SELL",
+             "price": "1000",
+             "quantity": "25",
+             "status" : "Completed"
+        }
     ]
 }
