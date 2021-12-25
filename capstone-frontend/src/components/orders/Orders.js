@@ -139,8 +139,8 @@ function Orders() {
                     <Form.Control className="fieldSize" onChange={handlePrice} />
                     {   
                         priceError && 
-                        <Alert variant='danger' className="alert">
-                            Price must be 12% of Face value!!
+                        <Alert variant='danger' id="alert-lg" className="alert">
+                            Price must be atleast 12% of Face value ({0.12*instrument.faceValue})!!
                         </Alert>
                     }
                 </div>
@@ -164,7 +164,7 @@ function Orders() {
                     </Form.Select>
                 </div>
                 <div className="btn-section">
-                    <Button variant="primary" active onClick={handleOrder}>Submit</Button>
+                    <Button variant="dark" active onClick={handleOrder}><b>Submit</b></Button>
                 </div>
             </form>
         </>

@@ -12,11 +12,14 @@ function Stocks() {
     const [buyOrdersLoad, setBuyOrdersLoad] = useState(false);
     const [sellOrdersLoad, setSellOrdersLoad] = useState(false);
 
+    const [top,setTop] = useState(-65);
+
     useEffect(() => {
         axios.get("http://localhost:8080/buyOrders")
             .then(res => {
                 setBuyOrders(res.data)
                 setBuyOrdersLoad(true)
+                setTop(top-5-res.data.length*210)
             })
             .catch(err => console.log("Error in Buy Orders"))
 
@@ -32,7 +35,7 @@ function Stocks() {
     const getBuyOrdersList = () => {
         const buyOrdersList = buyOrders.map(item => (
             <Card
-                bg={item.status=='Active'?'success':'info'}
+                bg={item.status=='Active'?'info':'secondary'}
                 key={item.id}
                 style={{ width: '18rem' }}
                 className="mb-2"
@@ -55,7 +58,7 @@ function Stocks() {
     const getSellOrdersList = () => {
         const sellOrdersList = sellOrders.map(item => (
             <Card
-                bg={item.status=='Active'?'success':'info'}
+                bg={item.status=='Active'?'info':'secondary'}
                 key={item.id}
                 style={{ width: '18rem' }}
                 className="mb-2"
@@ -78,14 +81,14 @@ function Stocks() {
     return (
         <>
             <div className="left">
-                <Alert variant={'dark'}>
-                &nbsp;&nbsp;Buy Orders
+                <Alert className="head-size" variant={'success'}>
+                    Buy Orders
                 </Alert>
                 {buyOrdersLoad && getBuyOrdersList()}
             </div>
-            <div className="right">
-            <Alert variant={'dark'}>
-                    &nbsp;&nbsp;Sell Orders
+            <div className="right" style={{marginTop:`${top}px`}}>
+            <Alert className="head-size" variant={'success'}>
+                    Sell Orders
                 </Alert>
                 {sellOrdersLoad && getSellOrdersList()}
             </div>

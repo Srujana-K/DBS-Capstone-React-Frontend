@@ -8,7 +8,7 @@ form{
     width:700px;
     padding: 25px;
     padding-bottom: 50px;
-    background-color: aqua;
+    background-color: lightskyblue;
 }
 .fieldRight{
     margin-top: -70px;
@@ -18,6 +18,10 @@ form{
 .btn-section{
     margin-top: -50px;
     margin-left: 450px;
+    
+}
+.btn{
+    background-color: black;
 }
 .formHeader{
     margin-left: 200px;
@@ -29,4 +33,7 @@ form{
     padding-top: 0px;
     padding-bottom: 30px;
 
+}
+#alert-lg{
+    padding-bottom: 50px;
 }
