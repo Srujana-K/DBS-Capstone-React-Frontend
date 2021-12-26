@@ -46,15 +46,17 @@ export default function Dashboard() {
     const [custodianLoad, setCustodianLoad] = useState(false);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/client_dashboard")
+        axios.get("/dashboard/client")
             .then(res => {
                 setClientData(res.data);
+                console.log(res.data)
                 setClientLoad(true);
             });
 
-        axios.get("http://localhost:8080/custodian_dashboard")
+        axios.get("/dashboard/custodian")
             .then(res => {
                 setCustodianData(res.data);
+                console.log(res.data)
                 setCustodianLoad(true);
             });
 
@@ -77,12 +79,12 @@ export default function Dashboard() {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="client_id" />
+                        <XAxis dataKey="clientId" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="total_buy_value" fill="#8884d8" />
-                        <Bar dataKey="total_sell_value" fill="#82ca9d" />
+                        <Bar dataKey="totalBuyValue" fill="#8884d8" />
+                        <Bar dataKey="totalSellValue" fill="#82ca9d" />
                     </BarChart>
                 </div>
                 <div className="right-chart">
@@ -99,12 +101,12 @@ export default function Dashboard() {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="custodian_id" />
+                        <XAxis dataKey="custodianId" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="total_buy_value" fill="#8884d8" />
-                        <Bar dataKey="total_sell_value" fill="#82ca9d" />
+                        <Bar dataKey="totalBuyValue" fill="#8884d8" />
+                        <Bar dataKey="totalSellValue" fill="#82ca9d" />
                     </BarChart>
                 </div>
             </>

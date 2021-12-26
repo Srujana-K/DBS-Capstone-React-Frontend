@@ -7,6 +7,38 @@
       "price": "1000",
       "quantity": "25",
       "id": 1
+    },
+    {
+      "clientId": "DBS002",
+      "instrumentId": 1002,
+      "orderDirection": "SELL",
+      "price": "100",
+      "quantity": "25",
+      "id": 2
+    },
+    {
+      "clientId": "DBS001",
+      "instrumentId": 1002,
+      "orderDirection": "BUY",
+      "price": "1000",
+      "quantity": "50",
+      "id": 3
+    },
+    {
+      "clientId": "DBS002",
+      "instrumentId": 1001,
+      "orderDirection": "SELL",
+      "price": "100",
+      "quantity": "25",
+      "id": 4
+    },
+    {
+      "clientId": "DBS002",
+      "instrumentId": 1001,
+      "orderDirection": "SELL",
+      "price": "100",
+      "quantity": "25",
+      "id": 5
     }
   ],
   "client": [
@@ -20,7 +52,7 @@
       "price": 14000000
     },
     {
-      "clientId": "DBS002",
+      "id": "DBS002",
       "clientName": "Loyds Bank Corporate plc",
       "custodian": {
         "custodianId": "CS001",
@@ -79,6 +111,24 @@
       "price": "1200",
       "quantity": "25",
       "status": "Completed"
+    },
+    {
+      "id": 5,
+      "clientId": "DBS003",
+      "instrumentId": 1001,
+      "orderDirection": "BUY",
+      "price": "1200",
+      "quantity": "25",
+      "status": "Completed"
+    },
+    {
+      "id": 6,
+      "clientId": "DBS003",
+      "instrumentId": 1001,
+      "orderDirection": "BUY",
+      "price": "1200",
+      "quantity": "25",
+      "status": "Active"
     }
   ],
   "sellOrders": [
@@ -99,6 +149,15 @@
       "price": "1000",
       "quantity": "25",
       "status": "Completed"
+    },
+    {
+      "id": 1,
+      "clientId": "DBS001",
+      "instrumentId": 1002,
+      "orderDirection": "SELL",
+      "price": "1000",
+      "quantity": "25",
+      "status": "Active"
     }
   ],
   "client_dashboard": [

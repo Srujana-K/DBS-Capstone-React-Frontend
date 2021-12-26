@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import { useNavigate } from 'react-router';
 import './Orders.css';
 
 function Orders() {
@@ -15,7 +16,7 @@ function Orders() {
     const handleClient = (e) => {
         setClient({ id: '', clientName: '' })
         setClientError(false);
-        axios.get("http://localhost:8080/client/" + e.target.value)
+        axios.get("/client/" + e.target.value)
             .then(res => setClient({ ...res.data }))
             //.then(console.log(client))
             .catch(err => {
@@ -30,7 +31,8 @@ function Orders() {
     //Handling Instrument Data
     const handleInstrument = (e) => {
         setInstrument({ id: '', instrumentName: '', faceValue: '', expiryDate: '' });
-        axios.get("http://localhost:8080/instrument/" + e.target.value)
+        setPrice('');
+        axios.get("/instrument/" + e.target.value)
             .then(res => setInstrument({ ...res.data }))
             // .then(console.log(instrument))
             .catch(err => console.log("instrument error"));
@@ -43,7 +45,7 @@ function Orders() {
     //Handling Price
     const handlePrice = (e) => {
         setPriceError(false);
-        if(e.target.value <= 0.12*instrument.faceValue)
+        if(e.target.value < 0.12*instrument.faceValue)
             setPriceError(true)
         setPrice(e.target.value)
     }
@@ -69,6 +71,8 @@ function Orders() {
         setDirection(e.target.value);
     }
 
+    let navigate = useNavigate();
+
     //Handling Order Submission
     const handleOrder = (e) => {
         e.preventDefault();
@@ -83,8 +87,21 @@ function Orders() {
             price,
             quantity
         }
-        axios.post("http://localhost:8080/orders", result)
-        console.log(result)
+        //console.log(result);
+        axios.post("/stock", result)
+        .then(res=>{
+            console.log(res.data)
+            if(res.data.id){
+                alert("Submitted Order Successfully!!");
+                navigate("/stocks");
+            }
+        })
+        .catch(err=>{
+            if(result.orderDirection=="BUY")
+                alert("Cannot buy stock, transaction limit exceeded");
+            else
+                alert("Cannot sell stock, no sufficient stocks available");
+        })
     }
 
     return (
@@ -113,11 +130,11 @@ function Orders() {
                     <Form.Label>Instrument Id</Form.Label>
                     <Form.Select className="fieldSize" onChange={handleInstrument}>
                         <option>Select</option>
-                        <option value="1001">1001</option>
-                        <option value="1002">1002</option>
-                        <option value="1003">1003</option>
-                        <option value="1004">1004</option>
-                        <option value="1005">1005</option>
+                        <option value="I001">I001</option>
+                        <option value="I002">I002</option>
+                        <option value="I003">I003</option>
+                        <option value="I004">I004</option>
+                        <option value="I005">I005</option>
                     </Form.Select>
                 </div>
                 <div className="fieldRight">
@@ -136,7 +153,7 @@ function Orders() {
                 <br />
                 <div>
                     <Form.Label>Price</Form.Label>
-                    <Form.Control className="fieldSize" onChange={handlePrice} />
+                    <Form.Control className="fieldSize" value={price} onChange={handlePrice} />
                     {   
                         priceError && 
                         <Alert variant='danger' id="alert-lg" className="alert">

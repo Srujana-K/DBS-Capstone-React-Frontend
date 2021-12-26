@@ -3,16 +3,21 @@ import { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Slideshow from '../slideshow/Slideshow';
 import {useNavigate} from 'react-router-dom';
+import img1 from '../images/img1.jpg';
 import './Home.css';
 
 function Home() {
     const [ items, setItems] = useState([]);
     const[load,setLoad] = useState(false);
+    const [top,setTop] = useState(-125);
+
     useEffect(()=>{
-        axios.get("http://localhost:8080/instrument")
+        axios.get("/instrument")
         .then(res=>{
             setItems(res.data);
+            console.log(res.data);
             setLoad(true);
+            setTop(top-310)
         });
     },[]);
 
@@ -20,6 +25,7 @@ function Home() {
     const redirect = ()=>{
         navigate("/orders");
     }
+
 
     return (
         <div className="container">
@@ -32,7 +38,7 @@ function Home() {
                 <Slideshow items={items}/>
             </>
             }
-            <img src="https://cdn4.vectorstock.com/i/1000x1000/66/73/bull-and-bear-stock-market-financial-bar-chart-vector-30566673.jpg" />
+            <img src={img1} style={{marginTop:`${top}px`}} />
         </div>
     );
 }
